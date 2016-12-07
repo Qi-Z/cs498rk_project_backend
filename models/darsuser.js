@@ -15,7 +15,7 @@ var DARSUserSchema = new mongoose.Schema({
     classRegistered:[{courseID: String, semester: String, grade: String}],
     classInProgress: [{courseID: String, semester: String, grade: String}],
     // password
-    password: String
+    password: {type: String, required: true}
 });
 
 DARSUserSchema.methods.generateHash = function(password) {

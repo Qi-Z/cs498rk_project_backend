@@ -54,7 +54,7 @@ module.exports = function (router) {
                         user.name = req.body.name;
                         user.netid = req.body.netid;
                         user.graduationDate = req.body.graduationDate;
-
+                        user.password = req.body.password;
                         // Taken
                         if (!req.body.classTaken)
                             user.classTaken = [];
@@ -79,6 +79,7 @@ module.exports = function (router) {
                             "netid": user.netid,
                             "name": user.name,
                             "graduationDate": user.graduationDate,
+                            "password": user.password,
                             "classTaken": user.classTaken,
                             "classInProgress": user.classInProgress,
                             "classRegistered": user.classRegistered,

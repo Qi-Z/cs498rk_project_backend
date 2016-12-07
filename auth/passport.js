@@ -41,6 +41,7 @@ module.exports = function (passport) {
                     newUser.save(function (err) {
                         console.log("Oops, some err in saving!");
                         return done(null, newUser);
+                        //return done(null, false); attempt to fix failure when failing to save to DB
                     });
                 }
 
