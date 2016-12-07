@@ -1,6 +1,13 @@
 module.exports = function(router, passport) {
 
     router.post('/signup', passport.authenticate('local-signup', {session: true}), function(req, res) {
+        req.login(req.user, function(err) {
+            if (err) {
+                console.log("fail to login after registration");
+            } else {
+                res.status(200).json({ user: req.user });
+            }
+        });
         res.status(200).json({ user: req.user });
     });
 
@@ -21,10 +28,11 @@ module.exports = function(router, passport) {
 }
 
 function isLoggedIn(req, res, next) {
+    console.log(req); // See what's in req
     if ( req.isAuthenticated() ) {
         return next();
     }
     console.log("unable to auth");
-    console.log(req); // See what's in req
+
     return res.status(401).json({ message: "unable to auth" });
 }
