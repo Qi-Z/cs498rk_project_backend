@@ -38,6 +38,7 @@ module.exports = function (passport) {
                     newUser.classRegistered = req.body.classRegistered;
 
                     console.log("begin to save user to DB");
+                    console.log(req.body);
                     newUser.save(function (err) {
                         console.log("Oops, some err in saving!");
                         return done(null, newUser);
