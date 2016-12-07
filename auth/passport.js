@@ -33,9 +33,9 @@ module.exports = function (passport) {
                     newUser.name = req.body.name;
                     newUser.password = newUser.generateHash(password);
                     newUser.graduationDate = req.body.graduationDate;
-                    newUser.classTaken = [];
-                    newUser.classInProgress = [];
-                    newUser.classRegistered = [];
+                    newUser.classTaken = req.body.classTaken;
+                    newUser.classInProgress = req.body.classInProgress;
+                    newUser.classRegistered = req.body.classRegistered;
 
                     console.log("begin to save user to DB");
                     newUser.save(function (err) {
