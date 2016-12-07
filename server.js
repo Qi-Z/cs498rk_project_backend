@@ -14,9 +14,7 @@ var app = express();
 // Use environment defined port or 4000
 var port = process.env.PORT || 4000;
 app.use(cookieParser());
-app.use(session({ secret: 'passport' }));
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 //Allow CORS so that backend and frontend could pe put on different servers
 var allowCrossDomain = function (req, res, next) {
@@ -29,14 +27,18 @@ var allowCrossDomain = function (req, res, next) {
 
 };
 app.use(allowCrossDomain);
-// Connect to mongodb
-mongoose.connect(secrets.mongo_connection);
+
 // Use the body-parser package in our application
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
 
+// Connect to mongodb
+mongoose.connect(secrets.mongo_connection);
+app.use(session({ secret: 'passport' }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 /**
  * Configure the passport instance by passing it to our passport module and as middleware to our express

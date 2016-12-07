@@ -25,5 +25,6 @@ function isLoggedIn(req, res, next) {
         return next();
     }
     console.log("unable to auth");
+    console.log(req); // See what's in req
     return res.status(401).json({ message: "unable to auth" });
 }
