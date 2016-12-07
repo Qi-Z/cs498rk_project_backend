@@ -1,5 +1,5 @@
 # cs498rk_project_backend
-# Demo server code for MP4
+
 You should be able to do
 `npm install` and `nodemon server.js`
 
